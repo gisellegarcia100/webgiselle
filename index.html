@@ -1,1 +1,423 @@
-pagina web de giselle
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f8fc">
+  <meta name="description" content="Perfil profesional de Giselle: economía, educación, estadística y ciencia de datos.">
+  <title>Giselle | Economía, educación y datos</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #122541;
+      --muted: #62738c;
+      --blue: #2865d8;
+      --blue-dark: #1846a0;
+      --pale: #eaf2ff;
+      --line: #e2eaf3;
+      --surface: #fff;
+      --background: #f4f8fc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 92% 8%, rgb(205 224 255 / 54%), transparent 29rem),
+        var(--background);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 11px;
+      color: #fff;
+      background: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(36px, 7vw, 76px);
+      border: 1px solid rgb(255 255 255 / 80%);
+      border-radius: 28px;
+      background: linear-gradient(118deg, #fff 25%, #f5f9ff 100%);
+      box-shadow: 0 24px 70px rgb(30 69 125 / 9%);
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -105px;
+      right: -72px;
+      width: 350px;
+      height: 350px;
+      border: 1px solid rgb(40 101 216 / 13%);
+      border-radius: 50%;
+      box-shadow: 0 0 0 34px rgb(40 101 216 / 4%), 0 0 0 70px rgb(40 101 216 / 3%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 19px;
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 20px;
+      height: 2px;
+      background: var(--blue);
+      content: "";
+    }
+
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 760;
+      letter-spacing: -0.065em;
+      line-height: 1.03;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .intro {
+      max-width: 590px;
+      margin: 23px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 18px);
+    }
+
+    .areas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 27px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .areas li {
+      padding: 7px 12px;
+      border: 1px solid #dce8f8;
+      border-radius: 999px;
+      color: #31547f;
+      background: rgb(255 255 255 / 78%);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .education {
+      padding: 67px 0 76px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 34px);
+      letter-spacing: -0.045em;
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      max-width: 330px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .credential {
+      grid-column: span 2;
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 8px 26px rgb(27 57 94 / 4%);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .credential:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgb(27 57 94 / 9%);
+    }
+
+    .credential.current {
+      border-color: #c9dcff;
+      background: linear-gradient(145deg, #fff, #f1f6ff);
+    }
+
+    .credential-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .credential-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--blue);
+      background: var(--pale);
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    .status {
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--blue-dark);
+      background: #e4eeff;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .credential h3 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: -0.025em;
+      line-height: 1.35;
+    }
+
+    .credential p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 19px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 32px, 540px);
+      }
+
+      .topbar {
+        padding: 20px 0;
+      }
+
+      .hero {
+        padding: 39px 27px;
+        border-radius: 22px;
+      }
+
+      .hero::after {
+        top: -135px;
+        right: -205px;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .education {
+        padding: 48px 0 55px;
+      }
+
+      .education-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .credential {
+        grid-column: span 1;
+        min-height: 190px;
+        padding: 19px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .nav-note {
+        max-width: 112px;
+        text-align: right;
+      }
+
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .credential {
+        min-height: auto;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Giselle, inicio">
+        <span class="brand-mark" aria-hidden="true">G</span>
+        <span>Giselle</span>
+      </a>
+      <span class="nav-note">Economía · Educación · Datos</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="profile-title">
+        <p class="eyebrow">Perfil profesional</p>
+        <h1 id="profile-title">Ideas que conectan <span>economía y datos.</span></h1>
+        <p class="intro">
+          Soy licenciada en Economía y profesora, con formación en educación, estadística
+          y ciencia de datos. Me interesa integrar estas disciplinas para comprender
+          mejor los desafíos y generar nuevas perspectivas.
+        </p>
+        <ul class="areas" aria-label="Áreas de formación">
+          <li>Economía</li>
+          <li>Docencia</li>
+          <li>Estadística</li>
+          <li>Data Science</li>
+        </ul>
+      </section>
+
+      <section class="education" aria-labelledby="education-title">
+        <div class="section-heading">
+          <h2 id="education-title">Formación académica</h2>
+          <p>Un recorrido interdisciplinario entre las ciencias sociales, la educación y los datos.</p>
+        </div>
+
+        <div class="education-grid">
+          <article class="credential">
+            <div class="credential-top">
+              <span class="credential-icon" aria-hidden="true">E</span>
+            </div>
+            <h3>Licenciada en Economía</h3>
+            <p>Universidad de San Andrés</p>
+          </article>
+
+          <article class="credential">
+            <div class="credential-top">
+              <span class="credential-icon" aria-hidden="true">P</span>
+            </div>
+            <h3>Profesora de Economía</h3>
+            <p>Universidad Católica Argentina (UCA)</p>
+          </article>
+
+          <article class="credential">
+            <div class="credential-top">
+              <span class="credential-icon" aria-hidden="true">T</span>
+            </div>
+            <h3>Especialista en Educación y TIC</h3>
+            <p>Ministerio de Educación de la Nación</p>
+          </article>
+
+          <article class="credential">
+            <div class="credential-top">
+              <span class="credential-icon" aria-hidden="true">M</span>
+            </div>
+            <h3>Magíster en Estadística</h3>
+            <p>Universidad Nacional de Tres de Febrero (UNTREF)</p>
+          </article>
+
+          <article class="credential current">
+            <div class="credential-top">
+              <span class="credential-icon" aria-hidden="true">D</span>
+              <span class="status">En curso</span>
+            </div>
+            <h3>Máster en Data Science, Big Data y Business Analytics</h3>
+            <p>Universidad Complutense de Madrid</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Giselle · Perfil profesional</span>
+      <span>Economía, educación y análisis de datos</span>
+    </footer>
+  </div>
+</body>
+</html>
